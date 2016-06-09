@@ -33,6 +33,7 @@ defmodule CwBidderBot.MessageHandler do
       }
     }
 
+    Logger.info "Sending payload:\n#{inspect payload}"
     url = "https://graph.facebook.com/v2.6/me/messages?access_token=#{@fb_page_access_token}"
     headers = [{"Content-Type", "application/json"}]
     HTTPoison.post!(url, Poison.encode!(payload), headers)
