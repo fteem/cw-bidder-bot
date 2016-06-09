@@ -53,7 +53,7 @@ defmodule CwBidderBot.MessageHandler do
     send_payload(payload)
   end
 
-  def handle(msg) do
+  def handle(msg = %{ message: %{ text: _text }}) do
     payload = %{
       recipient: %{ 
         id: msg.sender.id 
