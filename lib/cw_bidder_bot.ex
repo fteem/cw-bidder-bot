@@ -8,7 +8,7 @@ defmodule CwBidderBot do
 
     children = [
       # Define workers and child supervisors to be supervised
-      # worker(CwBidderBot.Worker, [arg1, arg2, arg3]),
+      worker(CwBidderBot.Server, [System.get_env("PORT")])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
