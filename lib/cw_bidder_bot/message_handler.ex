@@ -54,17 +54,11 @@ defmodule CwBidderBot.MessageHandler do
 
   def handle(msg) do
     payload = %{
-      recipient: %{ id: msg.sender.id },
-
+      recipient: %{ 
+        id: msg.sender.id 
+      },
       message: %{
-        attachment: %{
-          type: "template",
-          payload: %{
-            template_type: "generic",
-            title: "Hi!",
-            subtitle: "My name is Catawiki! How are you doing today?"
-          }
-        }
+        text: "Hey there, my name is Catawiki! How are you doing today?"
       }
     }
 
