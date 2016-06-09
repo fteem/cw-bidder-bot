@@ -28,6 +28,17 @@ defmodule CwBidderBot.Router do
     send_resp(conn, 200, "Message received")
   end
 
+  post "/outbid" do
+    {:ok, body, conn} = Plug.Conn.read_body(conn)
+
+    body
+    |> Poison.Parser.parse!(keys: :atoms)
+    |> hd()
+    |> Enum.each(&CwBidderBot.MessageHandler.handle/1)
+
+    send_resp(conn, 200, "Message received")
+  end
+
   match _ do
     send_resp(conn, 404, "404 - Page not found")
   end
