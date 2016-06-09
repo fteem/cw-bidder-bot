@@ -61,7 +61,8 @@ defmodule CwBidderBot.MessageHandler do
           type: "template",
           payload: %{
             template_type: "generic",
-            text: "Hi, my name is Catawiki! How are you doing today?"
+            title: "Hi!",
+            subtitle: "My name is Catawiki! How are you doing today?"
           }
         }
       }
