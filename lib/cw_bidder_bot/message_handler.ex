@@ -53,13 +53,13 @@ defmodule CwBidderBot.MessageHandler do
     send_payload(payload)
   end
 
-  def handle(msg = %{ message: %{ text: _text }}) do
+  def handle(msg) do
     payload = %{
       recipient: %{ 
         id: msg.sender.id 
       },
       message: %{
-        text: "Hey there, my name is Catawiki! How are you doing today?"
+        text: "Sorry, I don't understand that."
       }
     }
 

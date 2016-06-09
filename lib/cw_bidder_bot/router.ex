@@ -23,7 +23,8 @@ defmodule CwBidderBot.Router do
     |> Map.get(:entry)
     |> hd()
     |> Map.get(:messaging)
-    |> Enum.each(&CwBidderBot.MessageHandler.handle/1)
+    |> Enum.first
+    |> CwBidderBot.MessageHandler.handle
 
     send_resp(conn, 200, "Message received")
   end
