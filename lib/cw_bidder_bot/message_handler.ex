@@ -53,7 +53,23 @@ defmodule CwBidderBot.MessageHandler do
   end
 
   def handle(msg) do
+    payload = %{
+      recipient: %{ id: msg.sender.id },
+
+      message: %{
+        attachment: %{
+          type: "template",
+          payload: %{
+            template_type: "generic",
+            text: "Hi, my name is Catawiki! How are you doing today?"
+          }
+        }
+      }
+    }
+
     Logger.info "Unhandled message:\n#{inspect msg}"
+
+    send_payload(payload)
   end
 
   defp send_payload(payload) do
