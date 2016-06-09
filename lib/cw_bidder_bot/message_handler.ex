@@ -5,11 +5,16 @@ defmodule CwBidderBot.MessageHandler do
 
   def handle(msg = %{message: %{text: _text}}) do
     buttons = [
-      %{type: "postback", title: "Your name", payload: "PB_NAME"},
-      %{type: "web_url", title: "Your website", url: "https://playoverwatch.com/en-us/heroes/bastion/"}
+      %{type: "postback", title: "Increase bid", payload: "PB_NAME"},
+      %{type: "web_url", title: "See lot in broswer", url: "https://playoverwatch.com/en-us/heroes/bastion/"}
     ]
 
-    send_button_message(msg.sender.id, "Choose from the following options", buttons)
+    message_body = """
+    You have been overbid on AUCTION_NAME, please select an action. Ignore this
+    message if you don't want to take any actions.
+    """
+
+    send_button_message(msg.sender.id, message_body, buttons)
     # incoming text message
   end
 
