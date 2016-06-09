@@ -23,7 +23,7 @@ defmodule CwBidderBot.MessageHandler do
     send_payload(payload)
   end
 
-  def handle(%{ fb_uid: fb_uid, lot_link: lot_link, current_bid: current_bid, user_id: user_id, next_bid: next_bid }) do
+  def handle(%{ fb_uid: fb_uid, lot_link: lot_link, current_bid: current_bid, user_bid: user_bid, next_bid: next_bid }) do
     buttons = [
       %{type: "postback", title: "Increase bid", payload: "PB_NAME"},
       %{type: "web_url", title: "See lot in broswer", url: "https://playoverwatch.com/en-us/heroes/bastion/"}
@@ -36,8 +36,9 @@ defmodule CwBidderBot.MessageHandler do
 
     payload = %{
       # 884577415002929 - Ilija
-      recipient: %{id: fb_uid},
-
+      recipient: %{
+        id: fb_uid
+      },
       message: %{
         attachment: %{
           type: "template",
