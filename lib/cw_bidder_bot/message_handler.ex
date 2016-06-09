@@ -3,7 +3,9 @@ defmodule CwBidderBot.MessageHandler do
 
   @fb_page_access_token System.get_env("FB_PAGE_ACCESS_TOKEN")
 
-  def handle(msg = %{message: %{text: _text}}) do
+  def handle(msg = %{message: %{text: text}}) do
+    Logger.info "Sent text:\n#{inspect text}"
+
     buttons = [
       %{type: "postback", title: "Increase bid", payload: "PB_NAME"},
       %{type: "web_url", title: "See lot in broswer", url: "https://playoverwatch.com/en-us/heroes/bastion/"}
