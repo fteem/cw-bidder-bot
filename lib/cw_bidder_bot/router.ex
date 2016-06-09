@@ -33,8 +33,7 @@ defmodule CwBidderBot.Router do
 
     body
     |> Poison.Parser.parse!(keys: :atoms)
-    |> hd()
-    |> Enum.each(&CwBidderBot.MessageHandler.handle/1)
+    |> CwBidderBot.MessageHandler.handle
 
     send_resp(conn, 200, "Message received")
   end
