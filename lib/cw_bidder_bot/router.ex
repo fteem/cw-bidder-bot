@@ -23,7 +23,7 @@ defmodule CwBidderBot.Router do
     |> Map.get(:entry)
     |> hd()
     |> Map.get(:messaging)
-    |> List.first
+    |> hd()
     |> CwBidderBot.MessageHandler.handle
 
     send_resp(conn, 200, "Message received")
